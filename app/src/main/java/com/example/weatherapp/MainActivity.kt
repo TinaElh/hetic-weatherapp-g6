@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.weatherapp.model.WeatherResponse
 import com.example.weatherapp.network.WeatherService
+import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -24,7 +25,7 @@ class MainActivity : AppCompatActivity() {
             .build()
 
         weatherService = retrofit.create(WeatherService::class.java)
-        val valuesApi = weatherService.getCurrentWeatherData("35.69", "139.69", "36c2237a640c8bc142e71a6b7270c6ed")
+        val valuesApi = weatherService.getCurrentWeatherData("35.69", "139.69","metric", "36c2237a640c8bc142e71a6b7270c6ed")
 
         valuesApi.enqueue(object: Callback<WeatherResponse> {
 
@@ -33,15 +34,14 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onResponse(call: Call<WeatherResponse>, response: Response<WeatherResponse>){
-                val results = response.body()!!
-                println(results)
+                val weatherResults = response.body()!!
 
-                /*val stringBuilder = "Country: " +
-                        results.sys!!.country +
-                        "\n" +
-                        "Temperature: " +
-                        results.main!!.temp +
-                        "\n" +
+                textViewCityName.text = weatherResults.name!!
+                textViewActualTemperature.text = weatherResults.main!!.temp.toString()
+                //textViewMainWeather.text = weatherResults.weather[1]
+                //textViewDescriptionWeather.text = weatherResults.weather!!.description
+
+                    /*
                         "Temperature(Min): " +
                         results.main!!.temp_min +
                         "\n" +
@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity() {
                         "Pressure: " +
                         results.main!!.pressure
 
-                println(stringBuilder)*/
+                     */
             }
         })
     }

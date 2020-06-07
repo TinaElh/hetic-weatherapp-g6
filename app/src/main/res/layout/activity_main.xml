@@ -6,13 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    // Country
+    // City
     <TextView
-        android:id="@+id/countryTitle"
+        android:id="@+id/cityTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:text="Pays : "
+        android:text="City : "
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginStart="16dp"
@@ -20,45 +20,46 @@
         android:layout_marginTop="24dp"/>
 
     <TextView
-        android:id="@+id/countryName"
+        android:id="@+id/textViewCityName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="@id/countryTitle"
+        app:layout_constraintBottom_toBottomOf="@id/cityTitle"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/countryTitle"
-        app:layout_constraintTop_toTopOf="@id/countryTitle" />
+        app:layout_constraintStart_toEndOf="@id/cityTitle"
+        app:layout_constraintTop_toTopOf="@id/cityTitle" />
 
-    // Temperature (have to change to degree)
+    // Temperature
     <TextView
         android:id="@+id/temperatureTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Température : "
+        android:text="Temperature : "
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/countryTitle"
+        app:layout_constraintTop_toBottomOf="@+id/cityTitle"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginTop="24dp"/>
 
     <TextView
-        android:id="@+id/actualTemperature"
+        android:id="@+id/textViewActualTemperature"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:text="TextView"
         app:layout_constraintBottom_toBottomOf="@+id/temperatureTitle"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/temperatureTitle"
-        app:layout_constraintTop_toTopOf="@+id/temperatureTitle" />
+        app:layout_constraintTop_toTopOf="@+id/temperatureTitle"
+        app:layout_constraintStart_toStartOf="@+id/textViewCityName"
+        app:layout_constraintEnd_toEndOf="@+id/textViewCityName"/>
 
     // Weather informations
     <TextView
         android:id="@+id/weatherTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Tendance : "
+        android:text="Weather : "
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/temperatureTitle"
         android:layout_marginStart="16dp"
@@ -66,25 +67,26 @@
         android:layout_marginTop="24dp"/>
 
     <TextView
-        android:id="@+id/mainWeather"
+        android:id="@+id/textViewMainWeather"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:text="TextView"
         app:layout_constraintBottom_toBottomOf="@+id/weatherTitle"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/weatherTitle"
-        app:layout_constraintTop_toTopOf="@+id/weatherTitle" />
+        app:layout_constraintTop_toTopOf="@+id/weatherTitle"
+        app:layout_constraintStart_toStartOf="@+id/textViewCityName"
+        app:layout_constraintEnd_toEndOf="@+id/textViewCityName"/>
 
     <TextView
-        android:id="@+id/descriptionWeather"
+        android:id="@+id/textViewDescriptionWeather"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:text="TextView"
-        app:layout_constraintStart_toStartOf="@+id/mainWeather"
-        app:layout_constraintTop_toBottomOf="@+id/mainWeather"
-        app:layout_constraintEnd_toEndOf="@+id/mainWeather"/>
+        app:layout_constraintStart_toStartOf="@+id/textViewMainWeather"
+        app:layout_constraintTop_toBottomOf="@+id/textViewMainWeather"
+        app:layout_constraintEnd_toEndOf="@+id/textViewMainWeather"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
