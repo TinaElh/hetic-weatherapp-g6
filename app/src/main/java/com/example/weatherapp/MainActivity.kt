@@ -10,6 +10,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import android.util.Log
 
 class MainActivity : AppCompatActivity() {
 
@@ -38,23 +39,9 @@ class MainActivity : AppCompatActivity() {
 
                 textViewCityName.text = weatherResults.name!!
                 textViewActualTemperature.text = weatherResults.main!!.temp.toString()
-                //textViewMainWeather.text = weatherResults.weather[1]
-                //textViewDescriptionWeather.text = weatherResults.weather!!.description
+                textViewMainWeather.text = weatherResults.weather[0].main
+                textViewDescriptionWeather.text = weatherResults.weather[0].description
 
-                    /*
-                        "Temperature(Min): " +
-                        results.main!!.temp_min +
-                        "\n" +
-                        "Temperature(Max): " +
-                        results.main!!.temp_max +
-                        "\n" +
-                        "Humidity: " +
-                        results.main!!.humidity +
-                        "\n" +
-                        "Pressure: " +
-                        results.main!!.pressure
-
-                     */
             }
         })
     }
