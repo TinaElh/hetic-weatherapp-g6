@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@drawable/gradient_blue">
 
     // Name of the city
     <TextView
@@ -19,44 +20,58 @@
         android:textSize="16dp"/>
 
     // Current temperature, current weather and its description
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    // Humidity, UVI, feels like
+
+    <LinearLayout
         android:id="@+id/linearLayoutWeather"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
         android:orientation="vertical"
-        android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewCityName">
         // Current temperature
+
+        // Current weather
+
         <TextView
             android:id="@+id/textViewActualTemperature"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_margin="16dp"
             android:text="TextView"
-            android:layout_gravity="center"
-            android:textSize="32dp"/>
-        // Current weather
+            android:textSize="32dp" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="match_parent"
+            android:layout_height="99dp"
+            android:src="@drawable/soleil2" />
+
         <TextView
             android:id="@+id/textViewMainWeather"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_margin="4dp"
-            android:text="TextView"
-            android:layout_gravity="center"/>
+            android:text="TextView" />
         // Weather's description
+
         <TextView
             android:id="@+id/textViewDescriptionWeather"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_margin="0dp"
-            android:text="TextView"
-            android:layout_gravity="center"/>
+            android:text="TextView" />
+
     </LinearLayout>
 
-    // Humidity, UVI, feels like
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
         android:id="@+id/linearLayoutWeatherDetails"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -68,47 +83,67 @@
         android:gravity="center">
 
         // Layout for Humidity data
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        <LinearLayout
             android:id="@+id/linearLayoutHumidity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <TextView
                 android:id="@+id/textViewHumidityTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Humidity"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center"
+                android:text="Humidity" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:src="@drawable/goutte" />
+
             <TextView
                 android:id="@+id/textViewCurrentHumidity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="32dp"
                 android:text="TextView"/>
+
         </LinearLayout>
 
         // Layout for Uvi data
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+        <LinearLayout
             android:id="@+id/linearLayoutUvi"
-            android:layout_width="wrap_content"
+            android:layout_width="128dp"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <TextView
                 android:id="@+id/textViewUviTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="UVI"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center"
+                android:text="UVI" />
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="116dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="104dp"
+                android:src="@drawable/uv" />
+
             <TextView
                 android:id="@+id/textViewCurrentUvi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="32dp"
-                android:text="TextView"/>
+                android:text="TextView" />
+
         </LinearLayout>
 
         // Layout feels like temperature
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        <LinearLayout
             android:id="@+id/linearLayoutFeelsLike"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -119,6 +154,13 @@
                 android:layout_height="wrap_content"
                 android:text="Feels like"
                 android:layout_gravity="center"/>
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="33dp"
+                android:src="@drawable/thermometer" />
+
             <TextView
                 android:id="@+id/textViewCurrentFeels"
                 android:layout_width="wrap_content"
@@ -127,6 +169,8 @@
                 android:text="TextView"/>
         </LinearLayout>
     </LinearLayout>
+
+
     <!--
     <TextView
         android:id="@+id/textViewCurrentTime"
