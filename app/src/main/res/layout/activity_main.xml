@@ -17,12 +17,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:textSize="16dp"/>
+        android:textSize="16dp"
+        android:textColor="#FFFFFF"/>
 
     // Current temperature, current weather and its description
-
-    // Humidity, UVI, feels like
-
     <LinearLayout
         android:id="@+id/linearLayoutWeather"
         android:layout_width="0dp"
@@ -34,9 +32,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewCityName">
         // Current temperature
-
-        // Current weather
-
         <TextView
             android:id="@+id/textViewActualTemperature"
             android:layout_width="wrap_content"
@@ -44,33 +39,35 @@
             android:layout_gravity="center"
             android:layout_margin="16dp"
             android:text="TextView"
-            android:textSize="32dp" />
-
+            android:textSize="40dp"
+            android:textColor="#FFFFFF"/>
+        // Image
         <ImageView
             android:id="@+id/imageView4"
             android:layout_width="match_parent"
             android:layout_height="99dp"
             android:src="@drawable/soleil2" />
-
+        // Current weather
         <TextView
             android:id="@+id/textViewMainWeather"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="4dp"
-            android:text="TextView" />
+            android:text="TextView"
+            android:textColor="#FFFFFF"/>
         // Weather's description
-
         <TextView
             android:id="@+id/textViewDescriptionWeather"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="0dp"
-            android:text="TextView" />
-
+            android:text="TextView"
+            android:textColor="#FFFFFF"/>
     </LinearLayout>
 
+    // Humidity, UVI, feels like
     <LinearLayout
         android:id="@+id/linearLayoutWeatherDetails"
         android:layout_width="0dp"
@@ -88,58 +85,53 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
             <TextView
                 android:id="@+id/textViewHumidityTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Humidity" />
-
+                android:text="Humidity"
+                android:textColor="#FFFFFF"/>
             <ImageView
                 android:id="@+id/imageView2"
                 android:layout_width="match_parent"
                 android:layout_height="25dp"
                 android:src="@drawable/goutte" />
-
             <TextView
                 android:id="@+id/textViewCurrentHumidity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="32dp"
-                android:text="TextView"/>
-
+                android:text="TextView"
+                android:textColor="#FFFFFF"/>
         </LinearLayout>
 
         // Layout for Uvi data
-
         <LinearLayout
             android:id="@+id/linearLayoutUvi"
             android:layout_width="128dp"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
             <TextView
                 android:id="@+id/textViewUviTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="UVI" />
-
+                android:text="UVI"
+                android:textColor="#FFFFFF"/>
             <ImageView
                 android:id="@+id/imageView3"
-                android:layout_width="116dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="104dp"
-                android:src="@drawable/uv" />
-
+                android:src="@drawable/uv"
+                android:layout_gravity="center"/>
             <TextView
                 android:id="@+id/textViewCurrentUvi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="32dp"
-                android:text="TextView" />
-
+                android:text="TextView"
+                android:textColor="#FFFFFF"/>
         </LinearLayout>
 
         // Layout feels like temperature
@@ -153,20 +145,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Feels like"
-                android:layout_gravity="center"/>
-
+                android:layout_gravity="center"
+                android:textColor="#FFFFFF"/>
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="match_parent"
                 android:layout_height="33dp"
                 android:src="@drawable/thermometer" />
-
             <TextView
                 android:id="@+id/textViewCurrentFeels"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="32dp"
-                android:text="TextView"/>
+                android:text="TextView"
+                android:textColor="#FFFFFF"/>
         </LinearLayout>
     </LinearLayout>
 

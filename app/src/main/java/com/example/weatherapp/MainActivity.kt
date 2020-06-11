@@ -54,20 +54,23 @@ class MainActivity : AppCompatActivity() {
                 val weatherResults = response.body()!!
                 // Change format of the hour
                 val simpleDateFormat = SimpleDateFormat("dd/MM/yyy HH:mm:ss")
-                
+
                 // Capitalizing string
                 val strCurrentDescriptionWeather = weatherResults.current!!.weather[0].description
                 val strUppercaseCurrentDescriptionWeather = strCurrentDescriptionWeather?.capitalize()
+
+                // Concatenate degree
+                val degree = "°C"
 
                 // Display weather data
                 /* Current data */
                 textViewCityName.text = weatherResults.timezone
                 //textViewCurrentTime.text = simpleDateFormat.format(weatherResults?.current?.dt)
-                textViewActualTemperature.text = weatherResults.current!!.temp.toString()
+                textViewActualTemperature.text = weatherResults.current!!.temp.toInt().toString()+degree
                 textViewMainWeather.text = weatherResults.current!!.weather[0].main
                 textViewDescriptionWeather.text = strUppercaseCurrentDescriptionWeather
-                textViewCurrentFeels.text = weatherResults.current!!.feels_like.toString()
-                textViewCurrentUvi.text = weatherResults.current!!.uvi.toString()
+                textViewCurrentFeels.text = weatherResults.current!!.feels_like.toInt().toString()+degree
+                textViewCurrentUvi.text = weatherResults.current!!.uvi.toInt().toString()
                 textViewCurrentHumidity.text = weatherResults.current!!.humidity.toString()
                 /* Hourly data */
                 //textViewTimeHourly.text = simpleDateFormat.format(weatherResults?.hourly[1].dt)
