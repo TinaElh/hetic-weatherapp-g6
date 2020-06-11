@@ -4,30 +4,41 @@ import com.google.gson.annotations.SerializedName
 
 class WeatherResponse {
 
-    @SerializedName("coord")
-    var coord: Coord? = null
-    @SerializedName("sys")
-    var sys: Sys? = null
+    var lat: Float = 0.toFloat()
+    var lon: Float = 0.toFloat()
+    var timezone: String? = null
+
+    @SerializedName("current")
+    var current: Current? = null
     @SerializedName("weather")
     var weather = ArrayList<Weather>()
-    @SerializedName("main")
-    var main: Main? = null
-    @SerializedName("wind")
-    var wind: Wind? = null
-    @SerializedName("rain")
-    var rain: Rain? = null
-    @SerializedName("clouds")
-    var clouds: Clouds? = null
-    @SerializedName("dt")
-    var dt: Float = 0.toFloat()
-    @SerializedName("id")
-    var id: Int = 0
-    @SerializedName("name")
-    var name: String? = null
-    @SerializedName("cod")
-    var cod: Float = 0.toFloat()
+    @SerializedName("hourly")
+    var hourly = ArrayList<Hourly>()
+    @SerializedName("daily")
+    var daily = ArrayList<Daily>()
 }
 
+// Current weather data API response
+class Current {
+    @SerializedName("dt")
+    var dt: Int? = null
+    @SerializedName("sunrise")
+    var sunrise: Int? = null
+    @SerializedName("sunset")
+    var sunset: Int? = null
+    @SerializedName("temp")
+    var temp: Float = 0.toFloat()
+    @SerializedName("feels_like")
+    var feels_like: Float = 0.toFloat()
+    @SerializedName("uvi")
+    var uvi: Float = 0.toFloat()
+    @SerializedName("wind_speed")
+    var wind_speed: Float = 0.toFloat()
+    @SerializedName("weather")
+    var weather = ArrayList<Weather>()
+}
+
+// Array weather
 class Weather {
     @SerializedName("id")
     var id: Int = 0
@@ -39,48 +50,28 @@ class Weather {
     var icon: String? = null
 }
 
-class Clouds {
-    @SerializedName("all")
-    var all: Float = 0.toFloat()
-}
-
-class Rain {
-    @SerializedName("3h")
-    var h3: Float = 0.toFloat()
-}
-
-class Wind {
-    @SerializedName("speed")
-    var speed: Float = 0.toFloat()
-    @SerializedName("deg")
-    var deg: Float = 0.toFloat()
-}
-
-class Main {
+// Array of hourly forecast weather data API response
+class Hourly {
+    @SerializedName("dt")
+    var dt: Int? = null
     @SerializedName("temp")
     var temp: Float = 0.toFloat()
-    @SerializedName("humidity")
-    var humidity: Float = 0.toFloat()
-    @SerializedName("pressure")
-    var pressure: Float = 0.toFloat()
-    @SerializedName("temp_min")
-    var temp_min: Float = 0.toFloat()
-    @SerializedName("temp_max")
-    var temp_max: Float = 0.toFloat()
+    // There is the array "weather" in the array "hourly" which contains the weather data for the hour
+    @SerializedName("weather")
+    var weather = ArrayList<Weather>()
 }
 
-class Sys {
-    @SerializedName("country")
-    var country: String? = null
+// Array of daily forecast weather data API response
+class Daily {
+    @SerializedName("dt")
+    var dt: Int? = null
     @SerializedName("sunrise")
-    var sunrise: Long = 0
+    var sunrise: Int? = null
     @SerializedName("sunset")
-    var sunset: Long = 0
-}
-
-class Coord {
-    @SerializedName("lon")
-    var lon: Float = 0.toFloat()
-    @SerializedName("lat")
-    var lat: Float = 0.toFloat()
+    var sunset: Int? = null
+    @SerializedName("humidity")
+    var humidity: Int? = null
+    // There is the array "weather" in the array "daily" which contains the weather data for the day
+    @SerializedName("weather")
+    var weather = ArrayList<Weather>()
 }

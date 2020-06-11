@@ -1,5 +1,6 @@
 package com.example.weatherapp
 
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.weatherapp.model.WeatherResponse
@@ -11,6 +12,13 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import android.util.Log
+import androidx.annotation.RequiresApi
+import com.google.gson.GsonBuilder
+import java.text.SimpleDateFormat
+import java.time.Instant
+import java.time.format.DateTimeFormatter
+import java.time.temporal.TemporalField
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,10 +29,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val gson = GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ").create()
+
         // Declare retrofit
         val retrofit = Retrofit.Builder()
             .baseUrl("https://api.openweathermap.org/")
-            .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
 
         // Service for Retrofit with the WeatherService interface
@@ -42,12 +52,24 @@ class MainActivity : AppCompatActivity() {
             // Fire results of the API
             override fun onResponse(call: Call<WeatherResponse>, response: Response<WeatherResponse>){
                 val weatherResults = response.body()!!
+                // Change format of the hour
+                val simpleDateFormat = SimpleDateFormat("dd/MM/yyy HH:mm:ss")
+                
+                // Capitalizing string
+                val strCurrentDescriptionWeather = weatherResults.current!!.weather[0].description
+                val strUppercaseCurrentDescriptionWeather = strCurrentDescriptionWeather?.capitalize()
 
-                // Display informations
-                textViewCityName.text = weatherResults.name!!
-                textViewActualTemperature.text = weatherResults.main!!.temp.toString()
-                textViewMainWeather.text = weatherResults.weather[0].main
-                textViewDescriptionWeather.text = weatherResults.weather[0].description
+                // Display weather data
+                /* Current data */
+                textViewCityName.text = weatherResults.timezone
+                textViewCurrentTime.text = simpleDateFormat.format(weatherResults?.current?.dt)
+                textViewActualTemperature.text = weatherResults.current!!.temp.toString()
+                textViewMainWeather.text = weatherResults.current!!.weather[0].main
+                textViewDescriptionWeather.text = strUppercaseCurrentDescriptionWeather
+                /* Hourly data */
+                textViewTimeHourly.text = simpleDateFormat.format(weatherResults?.hourly[1].dt)
+                textViewTemperatureHourly.text = weatherResults.hourly[1].temp.toString()
+                textViewWeatherHourly.text = weatherResults.hourly[1].weather[0].main
             }
         })
     }
