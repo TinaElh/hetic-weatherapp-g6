@@ -30,6 +30,8 @@ class Current {
     var temp: Float = 0.toFloat()
     @SerializedName("feels_like")
     var feels_like: Float = 0.toFloat()
+    @SerializedName("humidity")
+    var humidity: Int? = null
     @SerializedName("uvi")
     var uvi: Float = 0.toFloat()
     @SerializedName("wind_speed")

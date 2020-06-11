@@ -6,43 +6,128 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    // City
-    <TextView
-        android:id="@+id/cityTitle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:text="City : "
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="24dp"/>
-
+    // Name of the city
     <TextView
         android:id="@+id/textViewCityName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_marginTop="80dp"
         android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="@id/cityTitle"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/cityTitle"
-        app:layout_constraintTop_toTopOf="@id/cityTitle" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="16dp"/>
 
-    // Current time
-    <TextView
-        android:id="@+id/currentTimeTitle"
+    // Current temperature, current weather and its description
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/linearLayoutWeather"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:text="Current time : "
+        android:orientation="vertical"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cityTitle"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="24dp"/>
+        app:layout_constraintTop_toBottomOf="@+id/textViewCityName">
+        // Current temperature
+        <TextView
+            android:id="@+id/textViewActualTemperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="TextView"
+            android:layout_gravity="center"
+            android:textSize="32dp"/>
+        // Current weather
+        <TextView
+            android:id="@+id/textViewMainWeather"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:text="TextView"
+            android:layout_gravity="center"/>
+        // Weather's description
+        <TextView
+            android:id="@+id/textViewDescriptionWeather"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="0dp"
+            android:text="TextView"
+            android:layout_gravity="center"/>
+    </LinearLayout>
 
+    // Humidity, UVI, feels like
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/linearLayoutWeatherDetails"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayoutWeather"
+        android:gravity="center">
+
+        // Layout for Humidity data
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/linearLayoutHumidity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/textViewHumidityTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Humidity"
+                android:layout_gravity="center"/>
+            <TextView
+                android:id="@+id/textViewCurrentHumidity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="32dp"
+                android:text="TextView"/>
+        </LinearLayout>
+
+        // Layout for Uvi data
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/linearLayoutUvi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/textViewUviTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="UVI"
+                android:layout_gravity="center"/>
+            <TextView
+                android:id="@+id/textViewCurrentUvi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="32dp"
+                android:text="TextView"/>
+        </LinearLayout>
+
+        // Layout feels like temperature
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/linearLayoutFeelsLike"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/textViewFeelsTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Feels like"
+                android:layout_gravity="center"/>
+            <TextView
+                android:id="@+id/textViewCurrentFeels"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="32dp"
+                android:text="TextView"/>
+        </LinearLayout>
+    </LinearLayout>
+    <!--
     <TextView
         android:id="@+id/textViewCurrentTime"
         android:layout_width="wrap_content"
@@ -53,63 +138,6 @@
         app:layout_constraintTop_toTopOf="@+id/currentTimeTitle"
         app:layout_constraintStart_toStartOf="@+id/textViewCityName"
         app:layout_constraintEnd_toEndOf="@+id/textViewCityName"/>
-
-    // Current temperature
-    <TextView
-        android:id="@+id/temperatureTitle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Temperature : "
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/currentTimeTitle"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="24dp"/>
-
-    <TextView
-        android:id="@+id/textViewActualTemperature"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="@+id/temperatureTitle"
-        app:layout_constraintTop_toTopOf="@+id/temperatureTitle"
-        app:layout_constraintStart_toStartOf="@+id/textViewCityName"
-        app:layout_constraintEnd_toEndOf="@+id/textViewCityName"/>
-
-    // Current weather data
-    <TextView
-        android:id="@+id/weatherTitle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Weather : "
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/temperatureTitle"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="24dp"/>
-
-    <TextView
-        android:id="@+id/textViewMainWeather"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="@+id/weatherTitle"
-        app:layout_constraintStart_toEndOf="@+id/weatherTitle"
-        app:layout_constraintTop_toTopOf="@+id/weatherTitle"
-        app:layout_constraintStart_toStartOf="@+id/textViewCityName"
-        app:layout_constraintEnd_toEndOf="@+id/textViewCityName"/>
-
-    <TextView
-        android:id="@+id/textViewDescriptionWeather"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:text="TextView"
-        app:layout_constraintStart_toStartOf="@+id/textViewMainWeather"
-        app:layout_constraintTop_toBottomOf="@+id/textViewMainWeather"
-        app:layout_constraintEnd_toEndOf="@+id/textViewMainWeather"/>
 
     // Hourly forecast
     <TextView
@@ -151,7 +179,7 @@
         android:text="Weather hourly"
         app:layout_constraintStart_toStartOf="@+id/textViewTemperatureHourly"
         app:layout_constraintTop_toBottomOf="@+id/textViewTemperatureHourly"
-        app:layout_constraintEnd_toEndOf="@+id/textViewTemperatureHourly"/>
+        app:layout_constraintEnd_toEndOf="@+id/textViewTemperatureHourly"/> -->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

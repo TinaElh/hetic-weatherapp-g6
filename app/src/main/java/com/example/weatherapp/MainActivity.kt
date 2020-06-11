@@ -62,14 +62,17 @@ class MainActivity : AppCompatActivity() {
                 // Display weather data
                 /* Current data */
                 textViewCityName.text = weatherResults.timezone
-                textViewCurrentTime.text = simpleDateFormat.format(weatherResults?.current?.dt)
+                //textViewCurrentTime.text = simpleDateFormat.format(weatherResults?.current?.dt)
                 textViewActualTemperature.text = weatherResults.current!!.temp.toString()
                 textViewMainWeather.text = weatherResults.current!!.weather[0].main
                 textViewDescriptionWeather.text = strUppercaseCurrentDescriptionWeather
+                textViewCurrentFeels.text = weatherResults.current!!.feels_like.toString()
+                textViewCurrentUvi.text = weatherResults.current!!.uvi.toString()
+                textViewCurrentHumidity.text = weatherResults.current!!.humidity.toString()
                 /* Hourly data */
-                textViewTimeHourly.text = simpleDateFormat.format(weatherResults?.hourly[1].dt)
-                textViewTemperatureHourly.text = weatherResults.hourly[1].temp.toString()
-                textViewWeatherHourly.text = weatherResults.hourly[1].weather[0].main
+                //textViewTimeHourly.text = simpleDateFormat.format(weatherResults?.hourly[1].dt)
+                //textViewTemperatureHourly.text = weatherResults.hourly[1].temp.toString()
+                //textViewWeatherHourly.text = weatherResults.hourly[1].weather[0].main
             }
         })
     }
